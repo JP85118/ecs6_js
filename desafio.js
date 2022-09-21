@@ -17,9 +17,14 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
-  let obj = objeto;
+  /* let obj = objeto;
   let array = Object.entries(obj);
-  return array;
+  return array; */
+  const arr = [];
+  for (const obj in objeto) {
+    arr.push(obj, objeto[obj]);
+  }
+  return arr;
 }
 
 
@@ -28,13 +33,22 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
-  let obj = {};
+  /* let obj = {};
   for (let i = 0; i < string.length; i++) {
     if(!obj[string[i]]){
       obj[string[i]] = 1;
     } else [
       obj[string[i]] ++ 
     ]
+  }
+  return obj; */
+  const obj = {};
+  for (let i = 0; i < string.length; i++) {
+    if (Object.keys(obj).includes(string[i])) {
+      obj[string[i]] ++
+      continue;
+    }
+    obj[string[i]] = 1 
   }
   return obj;
 }
@@ -54,8 +68,11 @@ function capToFront(s) {
       minus += s[i]
     }
   }
-  return mayus + minus;
+  /* return mayus + minus; */
+  return mayus.concat(minus);
 }
+
+
 
 function asAmirror(str) {
   //La función recibe una frase. 
@@ -63,7 +80,8 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
-  return str.split("").reverse().join("")
+  let strPov = str.split("").reverse().join("");
+  return strPov.split(" ").reverse().join(" ");
 } 
 
 
@@ -107,7 +125,7 @@ function sortArray(arr) {
   return arr;
 }
 
-console.log(buscoInterseccion([1,2,3],[2,69,3]));
+
 
 function buscoInterseccion(arreglo1, arreglo2){
   //Existen dos arrays, cada uno con 5 números. A partir de ello, escribir una función que permita 
